@@ -1,6 +1,6 @@
 import unittest
 
-from money import Dollor,Franc,Money
+from money import Money
 
 class MoneyTest(unittest.TestCase):
     def test_multiplication(self):
@@ -8,10 +8,6 @@ class MoneyTest(unittest.TestCase):
         self.assertTrue(Money.dollor(10) == (five.times(2)))
         self.assertTrue(Money.dollor(15) == (five.times(3)))
 
-    def test_franc_multiplication(self):
-        five = Money.franc(5)
-        self.assertTrue(Money.franc(10) == (five.times(2)))
-        self.assertTrue(Money.franc(15) == (five.times(3)))
 
     def test_equality(self):
         # Value Objectにするため、等価性のテストを行う

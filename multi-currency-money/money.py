@@ -10,27 +10,14 @@ class Money:
     @staticmethod
     def dollor(amount: int):
         # Factory Method
-        return Dollor(amount,"USD")
+        return Money(amount,"USD")
 
     @staticmethod
     def franc(amount: int):
-        return Franc(amount,"CHF")
+        return Money(amount,"CHF")
 
     def currency(self):
         return self._currency
 
     def times(self, multiplier):
         return Money(self.amount * multiplier, self.currency())
-
-class Franc(Money):
-    def __init__(self,amount,currency) -> None:
-        super().__init__(amount,currency)
-
-
-
-
-class Dollor(Money):
-    def __init__(self,amount,currency) -> None:
-        super().__init__(amount,currency)
-
-
