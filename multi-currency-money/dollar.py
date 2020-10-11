@@ -2,10 +2,12 @@ from money import Money
 
 
 class Franc(Money):
-    pass
 
+    def times(self, multiplier):
+        return Franc(self.amount * multiplier)
 
 
 class Dollor(Money):
-    pass
 
+    def times(self, multiplier):
+        return Dollor(self.amount * multiplier)

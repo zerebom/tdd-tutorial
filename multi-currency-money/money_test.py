@@ -17,6 +17,7 @@ class MoneyTest(unittest.TestCase):
         # Value Objectにするため、等価性のテストを行う
         self.assertTrue(Dollor(5).equals(Dollor(5)))
         self.assertFalse(Dollor(5).equals(Dollor(6)))
+        self.assertFalse(Dollor(5).equals(Franc(5)))
 
 if __name__ == "__main__":
     unittest.main()
