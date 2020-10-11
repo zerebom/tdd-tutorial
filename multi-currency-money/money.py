@@ -5,7 +5,7 @@ class Money:
 
     def __eq__(self, obj):
         # Pythonの等価性はこれでかける
-        return (self.amount == obj.amount) & (self.__class__ == obj.__class__)
+        return (self.amount == obj.amount) & (self.currency() == obj.currency())
 
     @staticmethod
     def dollor(amount: int):
@@ -19,12 +19,13 @@ class Money:
     def currency(self):
         return self._currency
 
+    def times(self, multiplier):
+        return Money(self.amount * multiplier, self.currency())
+
 class Franc(Money):
     def __init__(self,amount,currency) -> None:
         super().__init__(amount,currency)
 
-    def times(self, multiplier):
-        return Money.franc(self.amount * multiplier)
 
 
 
@@ -32,6 +33,4 @@ class Dollor(Money):
     def __init__(self,amount,currency) -> None:
         super().__init__(amount,currency)
 
-    def times(self, multiplier):
-        return Money.dollor(self.amount * multiplier)
 
