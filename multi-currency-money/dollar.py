@@ -3,4 +3,4 @@ class Dollor:
         self.amount = amount
 
     def times(self, multiplier):
-        self.amount = self.amount * multiplier
+        return Dollor(self.amount * multiplier)
