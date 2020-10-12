@@ -8,13 +8,13 @@ class Money:
         return (self.amount == obj.amount) & (self.currency() == obj.currency())
 
     @staticmethod
-    def dollor(amount: int):
+    def dollar(amount: int):
         # Factory Method
-        return Money(amount,"USD")
+        return Money(amount, "USD")
 
     @staticmethod
     def franc(amount: int):
-        return Money(amount,"CHF")
+        return Money(amount, "CHF")
 
     def currency(self):
         return self._currency
@@ -22,11 +22,23 @@ class Money:
     def times(self, multiplier):
         return Money(self.amount * multiplier, self.currency())
 
-    def plus(self,added):
-        return Money(self.amount + added.amount, self.currency())
+    def plus(self, added):
+        return Sum(self, added)
+
+    def reduce(self, to):
+            return self
+
 
 class Bank:
-    def reduce(self,amount,currency):
-        return Money.dollor(10)
+    def reduce(self, source, to: str):
+        return source.reduce(to)
 
 
+class Sum:
+    def __init__(self, augend, addend) -> None:
+        self.augend = augend
+        self.addend = addend
+
+    def reduce(self, to: str):
+        amount = self.augend.amount + self.addend.amount
+        return Money(amount, to)
