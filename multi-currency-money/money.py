@@ -21,3 +21,12 @@ class Money:
 
     def times(self, multiplier):
         return Money(self.amount * multiplier, self.currency())
+
+    def plus(self,added):
+        return Money(self.amount + added.amount, self.currency())
+
+class Bank:
+    def reduce(self,amount,currency):
+        return Money.dollor(10)
+
+
