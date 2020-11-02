@@ -25,13 +25,20 @@ class Money:
     def plus(self, added):
         return Sum(self, added)
 
-    def reduce(self, to):
-            return self
+    def reduce(self,bank,to):
+        rate = bank.rate(self.currency(),to,None)
+        return Money(self.amount/rate, to)
 
 
 class Bank:
     def reduce(self, source, to: str):
-        return source.reduce(to)
+        return source.reduce(self,to)
+
+    def addRate(self, _from: str, to: str, rate: int):
+        pass
+
+    def rate(self, _from: str, to: str, rate: int):
+        return 2 if (self.currency() == "CHF" and to == "USD") else 1
 
 
 class Sum:
@@ -39,6 +46,7 @@ class Sum:
         self.augend = augend
         self.addend = addend
 
-    def reduce(self, to: str):
+    def reduce(self, bank, to: str):
         amount = self.augend.amount + self.addend.amount
-        return Money(amount, to)
+        return Money(amount,to)
+
